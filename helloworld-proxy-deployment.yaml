@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-proxy
+  labels:
+    app: helloworld-proxy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: helloworld-proxy
+  template:
+    metadata:
+      labels:
+        app: helloworld-proxy
+    spec:
+      containers:
+      - name: helloworld-proxy
+        image: remkohdev/helloworld
+        ports:
+        - name: http-server
+          containerPort: 8080
